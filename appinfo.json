@@ -9,6 +9,12 @@
     "resources": {
         "media": [
             {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "icon",
+                "type": "png"
+            },
+            {
                 "file": "images/face_bg.png",
                 "name": "face_bg",
                 "type": "png"

@@ -17,13 +17,13 @@
 #include <face.h>
 
 static char the_time[] = "00:00";
-static char date_text[] = "Xxxxxxxxx 00";
+static char date_text[] = "DAY 000, 00 Xxxxxxxxx 0000";
 static bool refresh_date = true;
 	
 void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
 	strftime(the_time, sizeof("00:00"), "%H:%M", tick_time);
-	strftime(date_text, sizeof(date_text), "%a, %b %e", tick_time);
+	strftime(date_text, sizeof(date_text), "DAY %j, %d %B %y", tick_time);
 	
 	if(units_changed & DAY_UNIT){
 		refresh_date = true;
