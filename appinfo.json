@@ -1,0 +1,25 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "w84death@gmail.com",
+    "longName": "2001: Watchface",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/face_bg.png",
+                "name": "face_bg",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "2001: Watchface",
+    "uuid": "273fc4b1-2d8a-4a3a-9708-d533610f49a2",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
