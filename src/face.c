@@ -10,7 +10,7 @@ static BitmapLayer *s_bitmaplayer_bg;
 static Layer *s_layer_battery;
 static TextLayer *s_textlayer_date;
 static TextLayer *s_textlayer_time;
-static int battery_level;
+static int battery_level = 100;
 
 void show_time(char *time){
 	text_layer_set_text(s_textlayer_time, time);
@@ -20,14 +20,14 @@ void show_date(char *date){
 	text_layer_set_text(s_textlayer_date, date);
 }
 
-void battery_layer_update_callback(Layer *me, GContext* ctx){
-	graphics_context_set_fill_color(ctx, GColorWhite);
-	graphics_fill_rect(ctx, GRect(0, 1, 65-(int)((battery_level/100.0)*65.0), 5), 0, GCornerNone);
-}
-
 void update_battery(int level){
 	battery_level = level;
 	layer_mark_dirty(s_layer_battery);
+}
+
+void battery_layer_update_callback(Layer *me, GContext* ctx){
+	graphics_context_set_fill_color(ctx, GColorWhite);
+	graphics_fill_rect(ctx, GRect(0, 1, (int)((battery_level/100.0)*65.0), 5), 0, GCornerNone);
 }
 
 static void initialise_ui(void) {
@@ -48,6 +48,10 @@ static void initialise_ui(void) {
 	layer_set_update_proc(s_layer_battery, battery_layer_update_callback);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_layer_battery);
   
+	BatteryChargeState pbl_batt = battery_state_service_peek();
+	battery_level = pbl_batt.charge_percent;
+	layer_mark_dirty(s_layer_battery);
+	
   // s_textlayer_date
   s_textlayer_date = text_layer_create(GRect(4, 149, 140, 14));
   text_layer_set_background_color(s_textlayer_date, GColorClear);
