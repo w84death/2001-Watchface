@@ -2,10 +2,10 @@
 *
 *
 *   P1X, Krzysztof Jankowski
-*   Time Is Limitless
+*   2001: Watchface
 *
 *   abstract: Watch face for Pebble
-*   created: 11-09-2014
+*   created: 14-09-2014
 *   license: do what you want and dont bother me
 *
 *   webpage: http://p1x.in
