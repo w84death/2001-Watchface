@@ -47,15 +47,10 @@ static void initialise_ui(void) {
   s_layer_battery = layer_create(GRect(40, 135, 65, 7));
 	layer_set_update_proc(s_layer_battery, battery_layer_update_callback);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_layer_battery);
-  
-	BatteryChargeState pbl_batt = battery_state_service_peek();
-	battery_level = pbl_batt.charge_percent;
-	layer_mark_dirty(s_layer_battery);
 	
   // s_textlayer_date
   s_textlayer_date = text_layer_create(GRect(4, 149, 140, 14));
   text_layer_set_background_color(s_textlayer_date, GColorClear);
-  //text_layer_set_text(s_textlayer_date, "");
   text_layer_set_text_alignment(s_textlayer_date, GTextAlignmentCenter);
   text_layer_set_font(s_textlayer_date, s_res_gothic_14);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_date);
@@ -64,10 +59,9 @@ static void initialise_ui(void) {
   s_textlayer_time = text_layer_create(GRect(25, 65, 94, 34));
   text_layer_set_background_color(s_textlayer_time, GColorClear);
   text_layer_set_text_color(s_textlayer_time, GColorWhite);
-  //text_layer_set_text(s_textlayer_time, "");
   text_layer_set_text_alignment(s_textlayer_time, GTextAlignmentCenter);
   text_layer_set_font(s_textlayer_time, s_res_bitham_34_medium_numbers);
-  layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_time);
+  layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_time);		
 }
 
 static void destroy_ui(void) {

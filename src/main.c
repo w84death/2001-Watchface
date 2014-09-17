@@ -42,6 +42,17 @@ void batteryChanged(BatteryChargeState batt) {
 
 void handle_init(void) {
 	show_face();
+	
+	// set time
+	time_t now = time(NULL);
+  struct tm *current_time = localtime(&now);
+  tick_handler(current_time, SECOND_UNIT);
+
+	// set battery
+	BatteryChargeState batt = battery_state_service_peek();
+	update_battery(batt.charge_percent);
+	
+	// subscribe time & battery
 	tick_timer_service_subscribe(MINUTE_UNIT, (TickHandler)tick_handler);
 	battery_state_service_subscribe(batteryChanged);
 }
